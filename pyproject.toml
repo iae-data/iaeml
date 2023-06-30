@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "iaeml"
+version = "0.1.0"
+description = "Machine learning algorithms"
+authors = ["Fernando Chafim <fernandochafim@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "iaeml"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^21.9b0"
+flake8 = "^4.0.1"
+mypy = "^0.910"
+isort = "^5.9.3"
+pre-commit = "^2.15.0"
+pylint = "^2.11.1"
+sphinx = "^7.0.1"
+sphinx-autodoc-typehints = "^1.23.3"
+
+[tool.poetry.scripts]
+verify = "pytest && black --check . && flake8 && mypy && isort --check-only . && pylint && pre-commit run --all-files"
+
+[build-system]
+requires = ["poetry-core", "cython"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+extend-exclude = '''
+.git
+.venv
+.eggs
+*.egg
+dist
+build
+.tox
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--cov=iaeml", "--cov-report=xml"]
