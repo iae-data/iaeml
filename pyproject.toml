@@ -30,8 +30,12 @@ pytest = "^8.1.1"
 pytest-cov = "^4.1.0"
 
 [build-system]
-requires = ["poetry-core", "cython"]
+requires = ["poetry-core", "cython", "setuptools"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.build]
+generate-setup-file = false
+script = "build.py"
 
 [tool.black]
 line-length = 88
