@@ -10,10 +10,12 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
+twine = "^5.0.0"
+pyright = "^1.1.355"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-black = "^21.9b0"
+tox = "^4.14.1"
+black = "^24.3.0"
 flake8 = "^4.0.1"
 mypy = "^0.910"
 isort = "^5.9.3"
@@ -21,6 +23,11 @@ pre-commit = "^2.15.0"
 pylint = "^2.11.1"
 sphinx = "^7.0.1"
 sphinx-autodoc-typehints = "^1.23.3"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.14.1"
+pytest = "^8.1.1"
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core", "cython"]
@@ -40,6 +47,13 @@ build
 
 [tool.isort]
 profile = "black"
+src_paths = ["iaeml", "tests"]
+
+[tool.mypy]
+strict = true
+
+[tool.pyright]
+typeCheckingMode = "basic"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
